@@ -1,0 +1,39 @@
+{
+  "name": "jeremy-williams-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio website for Jeremy Williams - VP Software Development",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Static site - no build process needed'",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/jeremy-williams-portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "vp-software-development",
+    "software-architecture",
+    "leadership",
+    "professional-website",
+    "jeremy-williams",
+    "executive-portfolio"
+  ],
+  "author": "Jeremy Williams <your.email@example.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/jeremy-williams-portfolio/issues"
+  },
+  "homepage": "https://yourusername.github.io/jeremy-williams-portfolio",
+  "devDependencies": {
+    "gh-pages": "^6.0.0",
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
