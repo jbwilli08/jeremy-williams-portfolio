@@ -139,8 +139,8 @@
                     <!-- Main Professional Photo -->
                     <div class="relative mb-8">
                         <div class="w-80 h-80 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl border-4 border-white shadow-2xl mx-auto overflow-hidden">
-                            <img src="images/ProPhoto1.png" alt="Jeremy Williams - VP Software Development" class="w-full h-full object-cover"
-                                 onerror="this.onerror=null; this.src='images/ProPhoto1.jpg'; if(this.src.includes('.jpg')) this.src='images/prophoto1.png';">
+                            <img src="images/ProPhoto1.jpg" alt="Jeremy Williams - VP Software Development" class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.src='images/ProPhoto1.png';">
                         </div>
                         <!-- Professional Badge -->
                         <div class="absolute -top-2 -right-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
@@ -183,8 +183,8 @@
                     <div class="relative">
                         <div class="w-64 h-80 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl p-4 shadow-lg overflow-hidden">
                             <div class="w-full h-full rounded-xl overflow-hidden">
-                                <img src="images/ProPhoto2.png" alt="Jeremy Williams - Professional Photo 2" class="w-full h-full object-cover"
-                                     onerror="this.onerror=null; this.src='images/ProPhoto2.jpg'; if(this.src.includes('.jpg')) this.src='images/prophoto2.png';">
+                                <img src="images/ProPhoto2.jpg" alt="Jeremy Williams - Professional Photo 2" class="w-full h-full object-cover"
+                                     onerror="this.onerror=null; this.src='images/ProPhoto2.png';">
                             </div>
                         </div>
                         <!-- Photo 2 Badge -->
@@ -195,17 +195,47 @@
                 </div>
             </div>
             
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
-                        <h3 class="text-2xl font-bold mb-6">My Philosophy</h3>
-                        <p class="text-lg leading-relaxed mb-6">
-                            It all starts with imagination. Whether building castles from sand or crafting end-user solutions from code, innovation begins with an idea and the right tools to construct something tangible.
-                        </p>
-                        <p class="text-lg leading-relaxed">
-                            My journey led me from development to becoming an ambassador for technological vision. I chose Management Information Systems over Computer Science to embrace the entire Software Development Life Cycle, fostering environments where developers innovate within proper infrastructure.
-                        </p>
+            <!-- Professional Photos Side by Side -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-16">
+                <!-- ProPhoto1 Container -->
+                <div class="relative group">
+                    <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl p-6 shadow-lg h-96 overflow-hidden">
+                        <div class="w-full h-full rounded-xl overflow-hidden">
+                            <img src="images/ProPhoto1.jpg" alt="Professional Photo 1" class="w-full h-full object-cover" 
+                                 onerror="this.onerror=null; this.src='images/ProPhoto1.png';">
+                        </div>
                     </div>
+                    <!-- Photo 1 Badge -->
+                    <div class="absolute -top-2 -left-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
+                        Executive Portrait
+                    </div>
+                </div>
+
+                <!-- ProPhoto2 Container -->
+                <div class="relative group">
+                    <div class="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl p-6 shadow-lg h-96 overflow-hidden">
+                        <div class="w-full h-full rounded-xl overflow-hidden">
+                            <img src="images/ProPhoto2.jpg" alt="Professional Photo 2" class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.src='images/ProPhoto2.png';">
+                        </div>
+                    </div>
+                    <!-- Photo 2 Badge -->
+                    <div class="absolute -top-2 -left-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
+                        Professional Portrait
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Philosophy and Experience Content -->
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div class="bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
+                    <h3 class="text-2xl font-bold mb-6">My Philosophy</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        It all starts with imagination. Whether building castles from sand or crafting end-user solutions from code, innovation begins with an idea and the right tools to construct something tangible.
+                    </p>
+                    <p class="text-lg leading-relaxed">
+                        My journey led me from development to becoming an ambassador for technological vision. I chose Management Information Systems over Computer Science to embrace the entire Software Development Life Cycle, fostering environments where developers innovate within proper infrastructure.
+                    </p>
                 </div>
                 
                 <div class="space-y-6">
@@ -215,7 +245,7 @@
                     </div>
                     <div class="tech-card rounded-xl p-6">
                         <h4 class="text-xl font-semibold mb-3 text-blue-600">Technical Leadership</h4>
-                        <p class="text-gray-600">Leading talented teams of architects, developers, analysts, and project managers to deliver cutting-edge solutions.</p>
+                        <p class="text-gray-600">Leading talented teams of architects, developers, analysts, and managers to deliver cutting-edge solutions.</p>
                     </div>
                     <div class="tech-card rounded-xl p-6">
                         <h4 class="text-xl font-semibold mb-3 text-indigo-600">Full-Stack Oversight</h4>
@@ -358,15 +388,8 @@
                     <!-- AI Generated Photo -->
                     <div class="relative">
                         <div class="w-72 h-72 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl border-2 border-purple-200 shadow-lg mx-auto overflow-hidden">
-                            <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-                                <div class="text-center text-gray-500">
-                                    <svg class="w-12 h-12 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
-                                    </svg>
-                                    <p class="text-sm font-medium">AI Generated Photo</p>
-                                    <p class="text-xs text-gray-400 mt-1">Professional Portrait</p>
-                                </div>
-                            </div>
+                            <img src="images/AIPhoto.png" alt="AI Generated Professional Portrait" class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.src='images/AIPhoto.jpg';">
                         </div>
                         <!-- AI Badge -->
                         <div class="absolute -top-2 -right-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
@@ -386,6 +409,7 @@
                             </div>
                             <div class="space-y-2 text-sm">
                                 <div><span class="text-blue-400">const</span> <span class="text-green-400">teamRoles</span> = [</div>
+                                <div class="ml-4"><span class="text-orange-400">'Software Development Managers'</span>,</div>
                                 <div class="ml-4"><span class="text-orange-400">'Software Architects'</span>,</div>
                                 <div class="ml-4"><span class="text-orange-400">'Software Developers'</span>,</div>
                                 <div class="ml-4"><span class="text-orange-400">'Data Analysts'</span>,</div>
@@ -430,4 +454,161 @@
                     <div class="text-center">
                         <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4
+                                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold mb-2">Agile Practices</h4>
+                        <p class="text-sm text-gray-600">Scrum, paired programming, and continuous delivery</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold mb-2">Quality Assurance</h4>
+                        <p class="text-sm text-gray-600">Metrics, KPIs, and incident management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Let's Connect</h2>
+                <p class="text-xl text-gray-600">Ready to discuss software architecture, leadership, or potential opportunities</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Professional Experience</h3>
+                            <div class="space-y-3 text-gray-600">
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>15+ years software development</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>VP-level leadership experience</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Enterprise architecture expertise</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Core Technologies</h3>
+                            <div class="space-y-3 text-gray-600">
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                                    </svg>
+                                    <span>C#, .NET, ASP.NET Core</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                                    </svg>
+                                    <span>Microsoft Azure, DevOps</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                                    </svg>
+                                    <span>SQL, API Development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-8 border-t border-gray-200 text-center">
+                        <p class="text-gray-600 mb-6">
+                            Interested in discussing software architecture, team leadership, or exploring opportunities? 
+                            Let's connect and explore how we can drive technological excellence together.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="mailto:jeremy.williams@example.com" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                                Email Me
+                            </a>
+                            <a href="https://www.linkedin.com/in/jeremy-williams-tech/" target="_blank" rel="noopener noreferrer" class="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg font-medium hover:bg-purple-600 hover:text-white transition-all duration-300">
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">JW</span>
+                    </div>
+                    <span class="font-mono font-semibold text-lg">jeremy.williams</span>
+                </div>
+                <p class="text-gray-400 mb-6">
+                    VP Software Development | Architectural Excellence | Team Leadership
+                </p>
+                <p class="text-gray-500 text-sm">
+                    © 2024 Jeremy Williams. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Photo loading is now handled by direct HTML img tags with fallbacks
+            console.log('Portfolio website loaded successfully');
+            
+            // Add fade-in animation to sections on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections for scroll animations
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
