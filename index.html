@@ -136,22 +136,32 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <div class="code-block rounded-2xl p-6 text-green-400 font-mono text-sm floating">
-                        <div class="flex items-center mb-4">
-                            <div class="flex space-x-2">
-                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            </div>
-                            <span class="ml-4 text-gray-400">~/leadership-philosophy.cs</span>
+                    <!-- Main Professional Photo -->
+                    <div class="relative mb-8">
+                        <div class="w-80 h-80 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl border-4 border-white shadow-2xl mx-auto overflow-hidden">
+                            <img src="images/ProPhoto1.png" alt="Jeremy Williams - VP Software Development" class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.src='images/ProPhoto1.jpg'; if(this.src.includes('.jpg')) this.src='images/prophoto1.png';">
                         </div>
-                        <div class="space-y-2">
-                            <div><span class="text-purple-400">public class</span> <span class="text-blue-400">LeadershipStyle</span> {</div>
-                            <div class="ml-4"><span class="text-purple-400">var</span> vision = <span class="text-orange-400">"Bridge business & technology"</span>;</div>
-                            <div class="ml-4"><span class="text-purple-400">var</span> approach = <span class="text-orange-400">"Foster innovation"</span>;</div>
-                            <div class="ml-4"><span class="text-purple-400">var</span> passion = <span class="text-orange-400">"Full SDLC excellence"</span>;</div>
-                            <div class="ml-4"><span class="text-purple-400">return</span> <span class="text-blue-400">ArchitecturalVision</span>();</div>
-                            <div>}</div>
+                        <!-- Professional Badge -->
+                        <div class="absolute -top-2 -right-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
+                            VP Software Development
+                        </div>
+                        <!-- Floating Code Block -->
+                        <div class="absolute -right-4 top-16 code-block rounded-xl p-4 text-green-400 font-mono text-xs floating hidden lg:block">
+                            <div class="flex items-center mb-2">
+                                <div class="flex space-x-1">
+                                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                                    <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                </div>
+                                <span class="ml-2 text-gray-400 text-xs">~/vision.cs</span>
+                            </div>
+                            <div class="space-y-1 text-xs">
+                                <div><span class="text-purple-400">var</span> vision =</div>
+                                <div class="ml-2"><span class="text-orange-400">"Bridge business</span></div>
+                                <div class="ml-2"><span class="text-orange-400">& technology"</span>;</div>
+                                <div><span class="text-purple-400">return</span> <span class="text-blue-400">Innovation</span>();</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -164,9 +174,25 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-4">About Me</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
                     "Architecture starts when you carefully put two bricks together. There it begins."
                 </p>
+                
+                <!-- Photo2 positioned right after the quote -->
+                <div class="flex justify-center mb-12">
+                    <div class="relative">
+                        <div class="w-64 h-80 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl p-4 shadow-lg overflow-hidden">
+                            <div class="w-full h-full rounded-xl overflow-hidden">
+                                <img src="images/ProPhoto2.png" alt="Jeremy Williams - Professional Photo 2" class="w-full h-full object-cover"
+                                     onerror="this.onerror=null; this.src='images/ProPhoto2.jpg'; if(this.src.includes('.jpg')) this.src='images/prophoto2.png';">
+                            </div>
+                        </div>
+                        <!-- Photo 2 Badge -->
+                        <div class="absolute -top-2 -left-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
+                            Professional Portrait
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="grid lg:grid-cols-2 gap-12 items-center">
