@@ -82,6 +82,28 @@
             from, to { border-color: transparent; }
             50% { border-color: #667eea; }
         }
+        /* Mobile menu styles */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 100;
+            padding-top: 80px;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .typing {
+                animation: none;
+                border: none;
+                white-space: normal;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -90,7 +112,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-orange-600 rounded-lg flex items-center justify-center">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                         <span class="text-white font-bold text-sm">JW</span>
                     </div>
                     <span class="font-mono font-semibold text-lg">jeremy.williams</span>
@@ -102,7 +124,7 @@
                     <a href="#leadership" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Leadership</a>
                     <a href="#contact" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Contact</a>
                 </div>
-                <button class="md:hidden">
+                <button class="md:hidden" onclick="toggleMobileMenu()">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -110,6 +132,24 @@
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="flex justify-end px-4">
+            <button onclick="toggleMobileMenu()" class="p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-4 px-8 mt-8">
+            <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium text-lg" onclick="toggleMobileMenu()">Home</a>
+            <a href="#about" class="text-gray-700 hover:text-purple-600 font-medium text-lg" onclick="toggleMobileMenu()">About</a>
+            <a href="#expertise" class="text-gray-700 hover:text-purple-600 font-medium text-lg" onclick="toggleMobileMenu()">Expertise</a>
+            <a href="#leadership" class="text-gray-700 hover:text-purple-600 font-medium text-lg" onclick="toggleMobileMenu()">Leadership</a>
+            <a href="#contact" class="text-gray-700 hover:text-purple-600 font-medium text-lg" onclick="toggleMobileMenu()">Contact</a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="pt-24 pb-16 bg-gradient-to-br from-blue-50 via-orange-50 to-blue-100 min-h-screen flex items-center">
@@ -127,7 +167,7 @@
                         An experienced software development professional with 15+ years of expertise in architectural design, team leadership, and product strategy. I specialize in transforming complex business requirements into scalable, innovative software solutions.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="scrollToSection('about')" class="bg-gradient-to-r from-blue-600 to-orange-600 text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <button onclick="scrollToSection('about')" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
                             Explore My Work
                         </button>
                         <button onclick="scrollToSection('contact')" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-gradient-to-r hover:from-blue-600 hover:to-orange-600 hover:text-white transition-all duration-300">
@@ -140,7 +180,7 @@
                     <div class="relative mb-8">
                         <div class="w-80 h-80 bg-gradient-to-br from-blue-100 to-orange-100 rounded-2xl border-4 border-white shadow-2xl mx-auto overflow-hidden">
                             <img src="images/ProPhoto1.jpg" alt="Jeremy Williams - VP Software Development" class="w-full h-full object-cover"
-                                 onerror="this.onerror=null; this.src='images/ProPhoto1.png';">
+                                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%234A5568%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22200%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3EJeremy Williams%3C/text%3E%3C/svg%3E';">
                         </div>
                         <!-- Professional Badge -->
                         <div class="absolute -top-2 -right-2 bg-gradient-to-r from-blue-600 to-orange-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
@@ -189,7 +229,7 @@
                     <div class="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl p-6 shadow-lg h-96 overflow-hidden">
                         <div class="w-full h-full rounded-xl overflow-hidden">
                             <img src="images/ProPhoto2.jpg" alt="Professional Photo 2" class="w-full h-full object-cover"
-                                 onerror="this.onerror=null; this.src='images/ProPhoto2.png';">
+                                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%235A67D8%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22200%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3EJeremy Williams%3C/text%3E%3C/svg%3E';">
                         </div>
                     </div>
                 </div>
@@ -386,7 +426,7 @@
                     <div class="relative">
                         <div class="w-72 h-72 bg-gradient-to-br from-blue-100 to-orange-100 rounded-2xl border-2 border-blue-200 shadow-lg mx-auto overflow-hidden">
                             <img src="images/AIPhoto.png" alt="AI Generated Professional Portrait" class="w-full h-full object-cover"
-                                 onerror="this.onerror=null; this.src='images/AIPhoto.jpg';">
+                                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23667EEA%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22200%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3EJeremy Williams%3C/text%3E%3C/svg%3E';">
                         </div>
                         <!-- AI Badge -->
                         <div class="absolute -top-2 -right-2 bg-gradient-to-r from-blue-500 to-orange-500 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
@@ -409,6 +449,7 @@
                                 <div class="ml-4"><span class="text-orange-400">'Software Development Managers'</span>,</div>
                                 <div class="ml-4"><span class="text-orange-400">'Software Architects'</span>,</div>
                                 <div class="ml-4"><span class="text-orange-400">'Software Developers'</span>,</div>
+                                <div class="ml-4"><span class="text-orange-400">'Technical System Analysts'</span>,</div>
                                 <div class="ml-4"><span class="text-orange-400">'Data Analysts'</span>,</div>
                                 <div class="ml-4"><span class="text-orange-400">'Project Managers'</span>,</div>
                                 <div class="ml-4"><span class="text-orange-400">'Business Analysts'</span>,</div>
@@ -632,7 +673,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <div class="flex items-center justify-center space-x-2 mb-4">
-                    <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                         <span class="text-white font-bold text-sm">JW</span>
                     </div>
                     <span class="font-mono font-semibold text-lg">jeremy.williams</span>
@@ -653,6 +694,12 @@
             document.getElementById(sectionId).scrollIntoView({
                 behavior: 'smooth'
             });
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
         }
 
         // Initialize on page load
@@ -681,6 +728,21 @@
                 section.style.transform = 'translateY(20px)';
                 section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(section);
+            });
+
+            // Handle smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
             });
         });
     </script>
