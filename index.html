@@ -73,6 +73,7 @@
             animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
             white-space: nowrap;
             overflow: hidden;
+            width: 100%;
         }
         @keyframes typing {
             from { width: 0; }
@@ -102,6 +103,8 @@
                 animation: none;
                 border: none;
                 white-space: normal;
+                overflow: visible;
+                width: auto;
             }
         }
     </style>
