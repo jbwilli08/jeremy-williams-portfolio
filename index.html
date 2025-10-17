@@ -68,20 +68,39 @@
                 transform: translateY(0);
             }
         }
-        .typing {
+        .typing-animation {
+            display: inline-block;
             border-right: 2px solid #667eea;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
             white-space: nowrap;
             overflow: hidden;
-            width: 100%;
+            width: 0;
+            animation: 
+                typing 3.5s steps(35, end) forwards,
+                blink-caret 0.75s step-end infinite 3.5s;
         }
         @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
+            from { 
+                width: 0; 
+            }
+            to { 
+                width: 100%; 
+            }
         }
         @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #667eea; }
+            from, to { 
+                border-color: transparent; 
+            }
+            50% { 
+                border-color: #667eea; 
+            }
+        }
+        @media (max-width: 768px) {
+            .typing-animation {
+                font-size: 1rem;
+                animation: 
+                    typing 2.5s steps(25, end) forwards,
+                    blink-caret 0.75s step-end infinite 2.5s;
+            }
         }
         /* Mobile menu styles */
         .mobile-menu {
@@ -97,15 +116,6 @@
         }
         .mobile-menu.active {
             display: block;
-        }
-        @media (max-width: 768px) {
-            .typing {
-                animation: none;
-                border: none;
-                white-space: normal;
-                overflow: visible;
-                width: auto;
-            }
         }
     </style>
 </head>
@@ -163,8 +173,8 @@
                     <h1 class="text-5xl lg:text-6xl font-bold mb-6">
                         Hello, I'm <span class="bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">Jeremy Williams</span>
                     </h1>
-                    <div class="text-xl text-gray-600 mb-8 typing">
-                        Welcome to my digital architecture.
+                    <div class="text-xl text-gray-600 mb-8">
+                        <span class="typing-animation">Welcome to my digital architecture.</span>
                     </div>
                     <p class="text-lg text-gray-600 mb-8 leading-relaxed">
                         An experienced software development professional with 15+ years of expertise in architectural design, team leadership, and product strategy. I specialize in transforming complex business requirements into scalable, innovative software solutions.
@@ -240,7 +250,7 @@
             
             <!-- Philosophy and Experience Content -->
             <div class="grid lg:grid-cols-2 gap-12 items-start">
-                <div class="bg-gradient-to-br from-teal-600 to-cyan-700 rounded-2xl p-8 text-white">
+                <div class="bg-gradient-to-br from-slate-700 to-gray-900 rounded-2xl p-8 text-white">
                     <h3 class="text-2xl font-bold mb-6">My Philosophy</h3>
                     <p class="text-lg leading-relaxed mb-6">
                         It all starts with imagination. Whether building castles from sand or crafting end-user solutions from code, innovation begins with an idea and the right tools to construct something tangible.
