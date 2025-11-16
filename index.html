@@ -117,6 +117,16 @@
         .mobile-menu.active {
             display: block;
         }
+        .tech-bg {
+            background-color: #f8fafc;
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+            background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -279,7 +289,7 @@
     </section>
 
     <!-- Expertise Section -->
-    <section id="expertise" class="py-20 bg-gray-50">
+    <section id="expertise" class="py-20 tech-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-4">Technical Expertise</h2>
@@ -340,8 +350,8 @@
 
             <!-- Technical Stack -->
             <div class="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 class="text-2xl font-bold mb-2 text-center">Technology Stack</h3>
-                <p class="text-center text-gray-600 mb-8">Technologies and methodologies I work with</p>
+                <h3 class="text-4xl font-bold mb-4 text-center">Technology Stack</h3>
+                <p class="text-center text-gray-600 text-xl mb-8">Technologies and methodologies I work with</p>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Software Development -->
                     <div class="bg-blue-50 rounded-xl p-6">
