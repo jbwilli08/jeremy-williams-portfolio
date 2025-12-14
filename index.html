@@ -102,7 +102,6 @@
                     blink-caret 0.75s step-end infinite 2.5s;
             }
         }
-        /* Mobile menu styles */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -190,26 +189,23 @@
                         An experienced software development professional with 16+ years of expertise in architectural design, team leadership, and product strategy. I specialize in transforming complex business requirements into scalable, innovative software solutions.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="scrollToSection('about')" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <a href="#about" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-center">
                             Explore My Work
-                        </button>
-                        <button onclick="scrollToSection('contact')" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-gradient-to-r hover:from-blue-600 hover:to-orange-600 hover:text-white transition-all duration-300">
+                        </a>
+                        <a href="#contact" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-gradient-to-r hover:from-blue-600 hover:to-orange-600 hover:text-white transition-all duration-300 text-center">
                             Get In Touch
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="relative">
-                    <!-- Main Professional Photo -->
                     <div class="relative mb-8">
                         <div class="w-80 h-80 bg-gradient-to-br from-blue-100 to-orange-100 rounded-2xl border-4 border-white shadow-2xl mx-auto overflow-hidden">
                             <img src="images/ProPhoto1.jpg" alt="Jeremy Williams - VP Software Development" class="w-full h-full object-cover"
                                  onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%234A5568%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22200%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3EJeremy Williams%3C/text%3E%3C/svg%3E';">
                         </div>
-                        <!-- Professional Badge -->
                         <div class="absolute -top-2 -right-2 bg-gradient-to-r from-blue-600 to-orange-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
                             VP Software Development
                         </div>
-                        <!-- Floating Code Block -->
                         <div class="absolute -right-4 top-16 code-block rounded-xl p-4 text-green-400 font-mono text-xs floating hidden lg:block">
                             <div class="flex items-center mb-2">
                                 <div class="flex space-x-1">
@@ -245,9 +241,7 @@
                 </p>
             </div>
             
-            <!-- Professional Photos Side by Side -->
             <div class="grid lg:grid-cols-1 gap-8 mb-16">
-                <!-- ProPhoto2 Container - Centered -->
                 <div class="relative group max-w-md mx-auto">
                     <div class="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl p-6 shadow-lg h-96 overflow-hidden">
                         <div class="w-full h-full rounded-xl overflow-hidden">
@@ -258,7 +252,6 @@
                 </div>
             </div>
             
-            <!-- Philosophy and Experience Content -->
             <div class="grid lg:grid-cols-2 gap-12 items-start">
                 <div class="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-8 text-gray-800">
                     <h3 class="text-2xl font-bold mb-6 text-gray-900">My Philosophy</h3>
@@ -348,7 +341,7 @@
                 </div>
             </div>
 
-            <!-- Technical Stack -->
+            <!-- Technology Stack -->
             <div class="bg-white rounded-2xl p-8 shadow-lg">
                 <h3 class="text-4xl font-bold mb-4 text-center">Technology Stack</h3>
                 <p class="text-center text-gray-600 text-xl mb-8">Technologies and methodologies I work with</p>
@@ -523,13 +516,11 @@
                 </div>
                 
                 <div class="space-y-8">
-                    <!-- AI Generated Photo -->
                     <div class="relative">
                         <div class="w-72 h-72 bg-gradient-to-br from-blue-100 to-orange-100 rounded-2xl border-2 border-blue-200 shadow-lg mx-auto overflow-hidden">
                             <img src="images/AIPhoto.png" alt="AI Generated Professional Portrait" class="w-full h-full object-cover"
                                  onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23667EEA%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22200%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3EJeremy Williams%3C/text%3E%3C/svg%3E';">
                         </div>
-                        <!-- AI Badge -->
                         <div class="absolute -top-2 -right-2 bg-gradient-to-r from-blue-500 to-orange-500 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
                             AI Generated
                         </div>
@@ -630,7 +621,7 @@
                 </div>
             </div>
 
-            <!-- Education Section -->
+            <!-- Education Section (continued in next update due to length) -->
             <div class="bg-white rounded-2xl p-8 shadow-lg">
                 <h3 class="text-2xl font-bold mb-8 text-center">Education & Credentials</h3>
                 <div class="grid md:grid-cols-2 gap-8">
@@ -656,7 +647,6 @@
                                 <p>• Scrum Alliance - AI & Agility</p>
                             </div>
                             
-                            <!-- Tech Image -->
                             <div class="mt-6">
                                 <div class="rounded-xl overflow-hidden shadow-lg">
                                     <img src="images/tech-learning.jpg" alt="Professional Development and Technology" class="w-full h-48 object-cover"
@@ -897,7 +887,7 @@
                             Let's connect and explore how we can drive technological excellence together.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="/cdn-cgi/l/email-protection#2b41495c424747421b136b4c464a424705484446" class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                            <a href="mailto:jeremy@example.com" class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-300">
                                 Email Me
                             </a>
                             <a href="https://www.linkedin.com/in/jeremy-williams-tech/" target="_blank" rel="noopener noreferrer" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-all duration-300">
@@ -930,14 +920,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Smooth scrolling for navigation links
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-
+    <script>
         // Toggle mobile menu
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
@@ -946,7 +929,6 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Photo loading is now handled by direct HTML img tags with fallbacks
             console.log('Portfolio website loaded successfully');
             
             // Add fade-in animation to sections on scroll
@@ -972,7 +954,7 @@
                 observer.observe(section);
             });
 
-            // Handle smooth scrolling for anchor links
+            // Handle smooth scrolling for all anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -981,4 +963,12 @@
                     if (targetElement) {
                         targetElement.scrollIntoView({
                             behavior: 'smooth',
-                     
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
