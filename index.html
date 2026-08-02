@@ -6,13 +6,64 @@
     <title>Jeremy Williams - VP Software Development</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%232563eb;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%231d4ed8;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23grad)'/%3E%3Ctext x='50' y='70' font-family='Arial, sans-serif' font-size='55' font-weight='bold' fill='white' text-anchor='middle'%3EJW%3C/text%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
         .font-mono {
             font-family: 'JetBrains Mono', monospace;
+        }
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+        }
+        /* Site-wide fixed background layer */
+        .site-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-color: #f8fafc;
+            background-image:
+                linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
+            background-size: 48px 48px;
+            background-position: center center;
+        }
+        .site-bg::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.10) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: drift1 22s ease-in-out infinite;
+        }
+        .site-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            right: -10%;
+            width: 55vw;
+            height: 55vw;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.10) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: drift2 26s ease-in-out infinite;
+        }
+        @keyframes drift1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(8vw, 6vh) scale(1.1); }
+        }
+        @keyframes drift2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-6vw, -8vh) scale(1.05); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .site-bg::before, .site-bg::after { animation: none; }
         }
         .gradient-text {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -129,7 +180,10 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="text-gray-900">
+    <!-- Fixed site-wide background layer -->
+    <div class="site-bg" aria-hidden="true"></div>
+
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -147,8 +201,8 @@
                     <a href="#leadership" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Leadership</a>
                     <a href="#contact" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Contact</a>
                 </div>
-                <button class="md:hidden" onclick="toggleMobileMenu()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button class="md:hidden" onclick="toggleMobileMenu()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
@@ -159,8 +213,8 @@
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="mobile-menu">
         <div class="flex justify-end px-4">
-            <button onclick="toggleMobileMenu()" class="p-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button onclick="toggleMobileMenu()" class="p-2" aria-label="Close navigation menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
@@ -175,13 +229,13 @@
     </div>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-24 pb-16 bg-gradient-to-br from-blue-50 via-orange-50 to-blue-100 min-h-screen flex items-center">
+    <section id="home" class="pt-24 pb-16 bg-gradient-to-br from-blue-50/70 via-cyan-50/50 to-blue-100/70 min-h-screen flex items-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="slide-in">
                     <div class="font-mono text-sm text-blue-600 mb-4">VICE PRESIDENT, SOFTWARE DEVELOPMENT</div>
-                    <h1 class="text-5xl lg:text-6xl font-bold mb-6">
-                        Hello, I'm <span class="bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">Jeremy Williams</span>
+                    <h1 class="font-display text-5xl lg:text-6xl font-bold mb-6">
+                        Hello, I'm <span class="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Jeremy Williams</span>
                     </h1>
                     <div class="text-xl text-gray-600 mb-8">
                         <span class="typing-animation">Welcome to my digital architecture.</span>
@@ -200,11 +254,11 @@
                 </div>
                 <div class="relative">
                     <div class="relative mb-8">
-                        <div class="w-80 h-80 bg-gradient-to-br from-blue-100 to-orange-100 rounded-2xl border-4 border-white shadow-2xl mx-auto overflow-hidden">
+                        <div class="w-80 h-80 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl border-4 border-white shadow-2xl mx-auto overflow-hidden">
                             <img src="images/ProPhoto1.jpg" alt="Jeremy Williams - VP Software Development" class="w-full h-full object-cover"
                                  onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%234A5568%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22200%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3EJeremy Williams%3C/text%3E%3C/svg%3E';">
                         </div>
-                        <div class="absolute -top-2 -right-2 bg-gradient-to-r from-blue-600 to-orange-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
+                        <div class="absolute -top-2 -right-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
                             VP Software Development
                         </div>
                         <div class="absolute -right-4 top-16 code-block rounded-xl p-4 text-green-400 font-mono text-xs floating hidden lg:block">
@@ -218,8 +272,8 @@
                             </div>
                             <div class="space-y-1 text-xs">
                                 <div><span class="text-blue-400">var</span> vision =</div>
-                                <div class="ml-2"><span class="text-orange-400">"Bridge business</span></div>
-                                <div class="ml-2"><span class="text-orange-400">& technology"</span>;</div>
+                                <div class="ml-2"><span class="text-cyan-400">"Bridge business</span></div>
+                                <div class="ml-2"><span class="text-cyan-400">& technology"</span>;</div>
                                 <div><span class="text-purple-400">return</span> <span class="text-blue-400">Innovation</span>();</div>
                             </div>
                         </div>
@@ -230,10 +284,10 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20 bg-white/80 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">About Me</h2>
+                <h2 class="font-display text-4xl font-bold mb-4">About Me</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-2">
                     "Architecture starts when you carefully put two bricks together. There it begins."
                 </p>
@@ -246,7 +300,7 @@
                 <div class="relative group max-w-md mx-auto">
                     <div class="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl p-6 shadow-lg h-96 overflow-hidden">
                         <div class="w-full h-full rounded-xl overflow-hidden">
-                            <img src="images/ProPhoto2.jpg" alt="Professional Photo 2" class="w-full h-full object-cover"
+                            <img src="images/ProPhoto2.jpg" alt="Jeremy Williams, professional portrait" class="w-full h-full object-cover"
                                  onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%235A67D8%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22200%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3EJeremy Williams%3C/text%3E%3C/svg%3E';">
                         </div>
                     </div>
@@ -254,19 +308,25 @@
             </div>
             
             <div class="grid lg:grid-cols-2 gap-12 items-start">
-                <div class="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-8 text-gray-800">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-900">My Philosophy</h3>
-                    <p class="text-xl leading-relaxed mb-6 italic">
-                        It all starts with imagination. Whether building castles from sand or crafting end-user solutions from code, innovation begins with an idea and the right tools to construct something tangible.
-                    </p>
-                    <p class="text-xl leading-relaxed italic">
-                        My journey led me from development to becoming an ambassador for technological vision. I chose Management Information Systems over Computer Science to embrace the entire Software Development Life Cycle, fostering environments where developers innovate within proper infrastructure.
-                    </p>
+                <div class="relative bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-10 text-white overflow-hidden">
+                    <!-- Decorative oversized quote mark -->
+                    <div class="absolute -top-6 left-6 font-display text-[10rem] leading-none text-cyan-400/20 select-none pointer-events-none" aria-hidden="true">"</div>
+                    <!-- Accent bar -->
+                    <div class="absolute top-10 left-0 w-1 h-24 bg-gradient-to-b from-blue-400 to-cyan-400 rounded-r"></div>
+                    <div class="relative">
+                        <h3 class="font-display text-2xl font-bold mb-8 text-white">My Philosophy</h3>
+                        <p class="font-display text-2xl leading-relaxed mb-6 font-light tracking-tight">
+                            It all starts with imagination. Whether building castles from sand or crafting end-user solutions from code, innovation begins with an idea and the right tools to construct something tangible.
+                        </p>
+                        <p class="text-lg leading-relaxed font-light text-blue-100">
+                            My journey led me from development to becoming an ambassador for technological vision. I chose Management Information Systems over Computer Science to embrace the entire Software Development Life Cycle, fostering environments where developers innovate within proper infrastructure.
+                        </p>
+                    </div>
                 </div>
                 
                 <div class="space-y-6">
                     <div class="tech-card rounded-xl p-6">
-                        <h4 class="text-xl font-semibold mb-3 text-orange-600">Strategic Vision</h4>
+                        <h4 class="text-xl font-semibold mb-3 text-cyan-600">Strategic Vision</h4>
                         <p class="text-gray-600">Bridging business objectives with technical implementation through architectural excellence and strategic planning.</p>
                     </div>
                     <div class="tech-card rounded-xl p-6">
@@ -274,7 +334,7 @@
                         <p class="text-gray-600">Leading talented teams of architects, developers, analysts, and managers to deliver cutting-edge solutions.</p>
                     </div>
                     <div class="tech-card rounded-xl p-6">
-                        <h4 class="text-xl font-semibold mb-3 text-orange-600">Full-Stack Oversight</h4>
+                        <h4 class="text-xl font-semibold mb-3 text-cyan-600">Full-Stack Oversight</h4>
                         <p class="text-gray-600">From conceptual design to product release, ensuring quality and innovation throughout the entire development lifecycle.</p>
                     </div>
                 </div>
@@ -283,10 +343,10 @@
     </section>
 
     <!-- Expertise Section -->
-    <section id="expertise" class="py-20 tech-bg">
+    <section id="expertise" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Technical Expertise</h2>
+                <h2 class="font-display text-4xl font-bold mb-4">Technical Expertise</h2>
                 <p class="text-xl text-gray-600">Core competencies spanning the full technology stack</p>
             </div>
 
@@ -302,7 +362,7 @@
                 </div>
 
                 <div class="tech-card rounded-xl p-6 text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zM3 15a1 1 0 011-1h1a1 1 0 011 1v1a1 1 0 01-1 1H4a1 1 0 01-1-1v-1zm7-13a1 1 0 011-1h3a2 2 0 012 2v11a3 3 0 11-6 0V2z" clip-rule="evenodd"></path>
                         </svg>
@@ -312,7 +372,7 @@
                 </div>
 
                 <div class="tech-card rounded-xl p-6 text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg mx-auto mb-4 flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-3 3a1 1 0 100 2h.01a1 1 0 100-2H10zm-4 1a1 1 0 011-1h.01a1 1 0 110 2H7a1 1 0 01-1-1z" clip-rule="evenodd"></path>
                         </svg>
@@ -322,7 +382,7 @@
                 </div>
 
                 <div class="tech-card rounded-xl p-6 text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg mx-auto mb-4 flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
@@ -332,7 +392,7 @@
                 </div>
 
                 <div class="tech-card rounded-xl p-6 text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
                         </svg>
@@ -344,7 +404,7 @@
 
             <!-- Technology Stack -->
             <div class="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 class="text-4xl font-bold mb-4 text-center">Technology Stack</h3>
+                <h3 class="font-display text-4xl font-bold mb-4 text-center">Technology Stack</h3>
                 <p class="text-center text-gray-600 text-xl mb-8">Technologies and methodologies I work with</p>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Software Development -->
@@ -367,9 +427,9 @@
                     </div>
 
                     <!-- Programming Languages -->
-                    <div class="bg-orange-50 rounded-xl p-6">
-                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                            <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                    <div class="bg-cyan-50 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
@@ -386,9 +446,9 @@
                     </div>
 
                     <!-- Infrastructure -->
-                    <div class="bg-purple-50 rounded-xl p-6">
-                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                            <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                    <div class="bg-blue-50 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z"></path>
                                 <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z"></path>
                                 <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z"></path>
@@ -408,9 +468,9 @@
                     </div>
 
                     <!-- Data & APIs -->
-                    <div class="bg-green-50 rounded-xl p-6">
-                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                            <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <div class="bg-cyan-50 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
@@ -423,6 +483,7 @@
                             <li>• Swagger</li>
                             <li>• SSRS</li>
                             <li>• Power BI</li>
+                            <li>• MS Fabric</li>
                             <li>• Data Integration & Transformation</li>
                             <li>• Data Modeling & Schema Design</li>
                             <li>• AI-Assisted Power BI Report Wireframing</li>
@@ -430,9 +491,9 @@
                     </div>
 
                     <!-- FinTech -->
-                    <div class="bg-red-50 rounded-xl p-6">
-                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                            <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                    <div class="bg-blue-50 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
                                 <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"></path>
                             </svg>
@@ -453,9 +514,9 @@
                     </div>
 
                     <!-- Tools -->
-                    <div class="bg-yellow-50 rounded-xl p-6">
-                        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
-                            <svg class="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                    <div class="bg-cyan-50 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
@@ -476,20 +537,114 @@
                     </div>
                 </div>
             </div>
+
+            <!-- AI & Automation Section -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg mt-8">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl mb-4">
+                        <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-4xl font-bold mb-4">AI & Automation</h3>
+                    <p class="text-gray-600 text-xl">Practical applications driving efficiency across development operations</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- MS Power Automate -->
+                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-8 border border-blue-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="font-display text-2xl font-bold text-gray-900">MS Power Automate</h4>
+                        </div>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Streamlining team communication and coordination through intelligent workflow automation.
+                        </p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Automated team correspondence and communication</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Action item tracking and follow-ups</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Power Adaptive Teams response emails</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Meeting topic generation and organization</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Agentic AI Development -->
+                    <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-8 border border-cyan-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="font-display text-2xl font-bold text-gray-900">Agentic AI Development</h4>
+                        </div>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Leveraging autonomous AI agents to generate actionable metrics and insights across the sprint lifecycle.
+                        </p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-cyan-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Automated <strong>Sprint Readiness</strong> metrics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-cyan-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Automated <strong>Sprint Quality</strong> metrics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-cyan-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Automated <strong>Sprint Performance</strong> metrics</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+            </div>
         </div>
     </section>
 
     <!-- Leadership Section -->
-    <section id="leadership" class="py-20 bg-white">
+    <section id="leadership" class="py-20 bg-white/80 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Leadership Principles</h2>
+                <h2 class="font-display text-4xl font-bold mb-4">Leadership Principles</h2>
                 <p class="text-xl text-gray-600">Key principles that drive my leadership approach</p>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
                 <div>
-                    <h3 class="text-3xl font-bold mb-6">What drives my leadership?</h3>
+                    <h3 class="font-display text-3xl font-bold mb-6">What drives my leadership?</h3>
                     <div class="space-y-6">
                         <div class="flex items-start space-x-4">
                             <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
@@ -501,7 +656,7 @@
                             </div>
                         </div>
                         <div class="flex items-start space-x-4">
-                            <div class="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                 <span class="text-white text-sm font-bold">2</span>
                             </div>
                             <div>
@@ -519,7 +674,7 @@
                             </div>
                         </div>
                         <div class="flex items-start space-x-4">
-                            <div class="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                 <span class="text-white text-sm font-bold">4</span>
                             </div>
                             <div>
@@ -537,7 +692,7 @@
                             </div>
                         </div>
                         <div class="flex items-start space-x-4">
-                            <div class="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                 <span class="text-white text-sm font-bold">6</span>
                             </div>
                             <div>
@@ -551,7 +706,7 @@
                 <div class="space-y-8">
                     <div class="relative">
                         <div class="w-72 h-72 bg-gradient-to-br from-blue-100 to-orange-100 rounded-2xl border-2 border-blue-200 shadow-lg mx-auto overflow-hidden">
-                            <img src="images/AIPhoto.png" alt="AI Generated Professional Portrait" class="w-full h-full object-cover"
+                            <img src="images/AIPhoto.png" alt="AI-generated professional portrait of Jeremy Williams" class="w-full h-full object-cover"
                                  onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23667EEA%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%22200%22 y=%22200%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3EJeremy Williams%3C/text%3E%3C/svg%3E';">
                         </div>
                         <div class="absolute -top-2 -right-2 bg-gradient-to-r from-blue-500 to-orange-500 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
@@ -595,18 +750,18 @@
             <div class="bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 rounded-2xl p-8 mb-16 relative overflow-hidden">
                 <!-- Animated background elements -->
                 <div class="absolute inset-0 opacity-10">
-                    <div class="absolute top-20 left-10 w-72 h-72 bg-orange-500 rounded-full filter blur-3xl animate-pulse"></div>
+                    <div class="absolute top-20 left-10 w-72 h-72 bg-cyan-500 rounded-full filter blur-3xl animate-pulse"></div>
                     <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
                 </div>
                 
                 <div class="relative z-10">
                     <div class="text-center mb-12">
                         <div class="inline-block mb-4">
-                            <span class="bg-gradient-to-r from-orange-500 to-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-full">
+                            <span class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-semibold px-4 py-2 rounded-full">
                                 AI-Powered Innovation
                             </span>
                         </div>
-                        <h2 class="text-5xl font-bold mb-6 text-white">Embracing the Future of Technology</h2>
+                        <h2 class="font-display text-4xl font-bold mb-6 text-white">Embracing the Future of Technology</h2>
                         <p class="text-xl text-gray-300 max-w-3xl mx-auto">
                             Leveraging artificial intelligence to transform workflows, enhance productivity, and drive innovation across the software development lifecycle
                         </p>
@@ -614,7 +769,7 @@
 
                     <!-- Video Container -->
                     <div class="max-w-xl mx-auto mb-12">
-                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-orange-400/30 bg-gradient-to-br from-slate-800/50 to-gray-800/50 p-2">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-cyan-400/30 bg-gradient-to-br from-slate-800/50 to-gray-800/50 p-2">
                             <div class="relative rounded-xl overflow-hidden">
                                 <video 
                                     class="w-full h-auto rounded-lg shadow-2xl"
@@ -622,7 +777,8 @@
                                     muted 
                                     loop 
                                     playsinline
-                                    poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23F97316;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%233B82F6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad)' width='1200' height='675'/%3E%3Ctext x='600' y='320' font-family='Arial' font-size='48' fill='white' text-anchor='middle' font-weight='bold'%3EAI Innovation%3C/text%3E%3Ctext x='600' y='380' font-family='Arial' font-size='24' fill='rgba(255,255,255,0.8)' text-anchor='middle'%3ELoading video...%3C/text%3E%3C/svg%3E"
+                                    aria-label="AI-generated animation of Jeremy Williams using AI-assisted editing tools"
+                                    poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%232563eb;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad)' width='1200' height='675'/%3E%3Ctext x='600' y='320' font-family='Arial' font-size='48' fill='white' text-anchor='middle' font-weight='bold'%3EAI Innovation%3C/text%3E%3Ctext x='600' y='380' font-family='Arial' font-size='24' fill='rgba(255,255,255,0.8)' text-anchor='middle'%3ELoading video...%3C/text%3E%3C/svg%3E"
                                 >
                                     <source src="videos/jeremy-ai.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
@@ -639,12 +795,12 @@
                     <!-- Supporting Content -->
                     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                         <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                            <div class="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-3 text-center">AI-Enhanced Workflows</h3>
+                            <h3 class="font-display text-xl font-bold text-white mb-3 text-center">AI-Enhanced Workflows</h3>
                             <p class="text-gray-300 text-center text-sm">
                                 Integrating AI tools to streamline development processes, automate repetitive tasks, and boost team productivity
                             </p>
@@ -656,19 +812,19 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-3 text-center">Rapid Innovation</h3>
+                            <h3 class="font-display text-xl font-bold text-white mb-3 text-center">Rapid Innovation</h3>
                             <p class="text-gray-300 text-center text-sm">
                                 Leveraging cutting-edge AI technologies to accelerate ideation, prototyping, and solution delivery
                             </p>
                         </div>
 
                         <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                            <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-blue-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-3 text-center">Future-Ready Leadership</h3>
+                            <h3 class="font-display text-xl font-bold text-white mb-3 text-center">Future-Ready Leadership</h3>
                             <p class="text-gray-300 text-center text-sm">
                                 Championing AI adoption while maintaining security, ethics, and strategic alignment with business goals
                             </p>
@@ -680,7 +836,7 @@
                         <p class="text-lg text-gray-300 mb-6 italic">
                             "The future belongs to those who embrace innovation today"
                         </p>
-                        <a href="#contact" class="inline-block bg-gradient-to-r from-orange-500 to-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                        <a href="#contact" class="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300">
                             Let's Innovate Together
                         </a>
                     </div>
@@ -689,11 +845,11 @@
 
             <!-- Process Excellence -->
             <div class="bg-gray-50 rounded-2xl p-8 mb-16">
-                <h3 class="text-2xl font-bold mb-6 text-center">Process Excellence</h3>
+                <h3 class="font-display text-2xl font-bold mb-6 text-center">Process Excellence</h3>
                 <div class="grid md:grid-cols-6 gap-6">
                     <div class="text-center">
-                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
@@ -701,8 +857,8 @@
                         <p class="text-sm text-gray-600">Strategic vision and long-term technical roadmap development</p>
                     </div>
                     <div class="text-center">
-                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                        <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
@@ -719,8 +875,8 @@
                         <p class="text-sm text-gray-600">Dev, QA, Staging, Prod deployment strategies</p>
                     </div>
                     <div class="text-center">
-                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
                                 <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a1 1 0 001 1h6a1 1 0 001-1V3a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm2.5 5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45.15a2.5 2.5 0 11-3.9 0 3.001 3.001 0 003.9 0z" clip-rule="evenodd"></path>
                             </svg>
@@ -729,8 +885,8 @@
                         <p class="text-sm text-gray-600">DAT, UAT, and comprehensive QA processes</p>
                     </div>
                     <div class="text-center">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
@@ -738,8 +894,8 @@
                         <p class="text-sm text-gray-600">Metrics, KPIs, and incident management</p>
                     </div>
                     <div class="text-center">
-                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                        <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
                                 <path d="M6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
                             </svg>
@@ -752,7 +908,7 @@
 
             <!-- Education Section (continued in next update due to length) -->
             <div class="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 class="text-2xl font-bold mb-8 text-center">Education & Credentials</h3>
+                <h3 class="font-display text-2xl font-bold mb-8 text-center">Education & Credentials</h3>
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="space-y-6">
                         <div class="border-l-4 border-cyan-600 pl-6">
@@ -778,7 +934,7 @@
                             
                             <div class="mt-6">
                                 <div class="rounded-xl overflow-hidden shadow-lg">
-                                    <img src="images/tech-learning.jpg" alt="Professional Development and Technology" class="w-full h-48 object-cover"
+                                    <img src="images/tech-learning.jpg" alt="Abstract technology graphic representing continuous professional development" class="w-full h-48 object-cover"
                                          onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 300%22%3E%3Cdefs%3E%3ClinearGradient id=%22grad%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22%3E%3Cstop offset=%220%25%22 style=%22stop-color:%232563eb;stop-opacity:1%22 /%3E%3Cstop offset=%22100%25%22 style=%22stop-color:%2306b6d4;stop-opacity:1%22 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=%22url(%23grad)%22 width=%22600%22 height=%22300%22/%3E%3Cg fill=%22white%22 opacity=%220.2%22%3E%3Ccircle cx=%22100%22 cy=%2280%22 r=%2240%22/%3E%3Ccircle cx=%22300%22 cy=%22150%22 r=%2260%22/%3E%3Ccircle cx=%22500%22 cy=%22100%22 r=%2250%22/%3E%3Crect x=%22150%22 y=%22200%22 width=%2280%22 height=%2280%22 rx=%2210%22/%3E%3Crect x=%22350%22 y=%2240%22 width=%2260%22 height=%2260%22 rx=%228%22/%3E%3C/g%3E%3Ctext x=%22300%22 y=%22160%22 font-family=%22Arial%22 font-size=%2232%22 fill=%22white%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EContinuous Learning%3C/text%3E%3C/svg%3E';">
                                 </div>
                             </div>
@@ -880,7 +1036,7 @@
                                 </div>
 
                                 <div>
-                                    <h5 class="font-semibold text-indigo-700 mb-2 text-sm">People & Organization</h5>
+                                    <h5 class="font-semibold text-blue-700 mb-2 text-sm">People & Organization</h5>
                                     <div class="space-y-1 text-xs">
                                         <div class="flex items-center space-x-1">
                                             <div class="w-1 h-1 bg-indigo-600 rounded-full"></div>
@@ -914,7 +1070,7 @@
                                 </div>
 
                                 <div>
-                                    <h5 class="font-semibold text-green-700 mb-2 text-sm">Innovation & Growth</h5>
+                                    <h5 class="font-semibold text-cyan-700 mb-2 text-sm">Innovation & Growth</h5>
                                     <div class="space-y-1 text-xs">
                                         <div class="flex items-center space-x-1">
                                             <div class="w-1 h-1 bg-green-600 rounded-full"></div>
@@ -951,10 +1107,10 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
+    <section id="contact" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Let's Connect</h2>
+                <h2 class="font-display text-4xl font-bold mb-4">Let's Connect</h2>
                 <p class="text-xl text-gray-600">Ready to discuss software architecture, leadership, or potential opportunities</p>
             </div>
             
@@ -989,7 +1145,7 @@
                             <h3 class="text-xl font-semibold mb-4">Core Technologies</h3>
                             <div class="space-y-3 text-gray-600">
                                 <div class="flex items-center space-x-3">
-                                    <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
                                     </svg>
                                     <span>C#, .NET, ASP.NET Core</span>
@@ -1053,7 +1209,11 @@
         // Toggle mobile menu
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('active');
+            const isOpen = menu.classList.toggle('active');
+            const toggleBtn = document.querySelector('[aria-controls="mobileMenu"]');
+            if (toggleBtn) {
+                toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            }
         }
 
         // Initialize on page load
