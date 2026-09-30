@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies - Jeremy Williams</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%232563eb;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%231d4ed8;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23grad)'/%3E%3Ctext x='50' y='70' font-family='Arial, sans-serif' font-size='55' font-weight='bold' fill='white' text-anchor='middle'%3EJW%3C/text%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+        }
+        /* Site-wide fixed background layer */
+        .site-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-color: #f8fafc;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%232563eb' stroke-width='1' stroke-opacity='0.10'%3E%3Cpath d='M10 10 H50 V50'/%3E%3Cpath d='M10 60 H30 V90 H70'/%3E%3Cpath d='M60 10 V30 H100 V70'/%3E%3Cpath d='M110 40 H80 V80 V80 H110'/%3E%3Cpath d='M40 110 V80 H70 V110'/%3E%3Cpath d='M90 110 V90 H110'/%3E%3C/g%3E%3Cg fill='%232563eb' fill-opacity='0.14'%3E%3Ccircle cx='50' cy='50' r='3'/%3E%3Ccircle cx='10' cy='10' r='3'/%3E%3Ccircle cx='30' cy='90' r='3'/%3E%3Ccircle cx='70' cy='90' r='3'/%3E%3Ccircle cx='60' cy='30' r='3'/%3E%3Ccircle cx='100' cy='70' r='3'/%3E%3Ccircle cx='80' cy='80' r='3'/%3E%3Ccircle cx='40' cy='80' r='3'/%3E%3Ccircle cx='70' cy='110' r='3'/%3E%3C/g%3E%3Cg fill='%2306b6d4' fill-opacity='0.14'%3E%3Ccircle cx='110' cy='40' r='3'/%3E%3Ccircle cx='60' cy='10' r='3'/%3E%3Ccircle cx='90' cy='90' r='3'/%3E%3Ccircle cx='10' cy='60' r='3'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 240px 240px;
+            background-position: center center;
+        }
+        .site-bg::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.10) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: drift1 22s ease-in-out infinite;
+        }
+        .site-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            right: -10%;
+            width: 55vw;
+            height: 55vw;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.10) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: drift2 26s ease-in-out infinite;
+        }
+        @keyframes drift1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(8vw, 6vh) scale(1.1); }
+        }
+        @keyframes drift2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-6vw, -8vh) scale(1.05); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .site-bg::before, .site-bg::after { animation: none; }
+        }
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #2563eb, #06b6d4);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .case-card {
+            transition: all 0.4s ease;
+        }
+        .case-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
+        }
+        .slide-in {
+            animation: slideIn 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        @keyframes slideIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 100;
+            padding-top: 80px;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+    <!-- Fixed site-wide background layer -->
+    <div class="site-bg" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">JW</span>
+                    </div>
+                    <span class="font-mono font-semibold text-lg">jeremy.williams</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html#home" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="index.html#about" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="index.html#expertise" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Expertise</a>
+                    <a href="index.html#leadership" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Leadership</a>
+                    <a href="case-studies.html" class="nav-link text-blue-600 font-semibold">Case Studies</a>
+                    <a href="index.html#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                </div>
+                <button class="md:hidden" onclick="toggleMobileMenu()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="flex justify-end px-4">
+            <button onclick="toggleMobileMenu()" class="p-2" aria-label="Close navigation menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-4 px-8 mt-8">
+            <a href="index.html#home" class="text-gray-700 hover:text-blue-600 font-medium text-lg" onclick="toggleMobileMenu()">Home</a>
+            <a href="index.html#about" class="text-gray-700 hover:text-blue-600 font-medium text-lg" onclick="toggleMobileMenu()">About</a>
+            <a href="index.html#expertise" class="text-gray-700 hover:text-blue-600 font-medium text-lg" onclick="toggleMobileMenu()">Expertise</a>
+            <a href="index.html#leadership" class="text-gray-700 hover:text-blue-600 font-medium text-lg" onclick="toggleMobileMenu()">Leadership</a>
+            <a href="case-studies.html" class="text-blue-600 font-semibold text-lg" onclick="toggleMobileMenu()">Case Studies</a>
+            <a href="index.html#contact" class="text-gray-700 hover:text-blue-600 font-medium text-lg" onclick="toggleMobileMenu()">Contact</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <section class="pt-32 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center slide-in">
+            <div class="font-mono text-sm text-blue-600 mb-4">FEATURED WORK</div>
+            <h1 class="font-display text-5xl lg:text-6xl font-bold mb-6">
+                Case <span class="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Studies</span>
+            </h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                A selection of engineering and leadership initiatives, from delivery transformation to data automation, each showing the challenge, the approach, and the outcome.
+            </p>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="pb-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+            <!-- Case Study 1 -->
+            <article class="case-card bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                <div class="grid lg:grid-cols-3">
+                    <!-- Left accent panel -->
+                    <div class="bg-gradient-to-br from-slate-900 to-blue-900 p-8 lg:p-10 text-white flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block bg-cyan-400/20 text-cyan-300 text-xs font-semibold px-3 py-1 rounded-full mb-4">Engineering Leadership</span>
+                            <h2 class="font-display text-2xl font-bold mb-3">Agile Transformation of the SDLC</h2>
+                            <p class="text-blue-100 text-sm leading-relaxed">Moving a waterfall-bound delivery organization to a hybrid Agile model built for CI/CD.</p>
+                        </div>
+                        <div class="mt-8 grid grid-cols-3 gap-3">
+                            <div>
+                                <div class="font-display text-2xl font-bold text-cyan-300">2</div>
+                                <div class="text-xs text-blue-200">Development silos</div>
+                            </div>
+                            <div>
+                                <div class="font-display text-2xl font-bold text-cyan-300">1</div>
+                                <div class="text-xs text-blue-200">Architecture silo</div>
+                            </div>
+                            <div>
+                                <div class="font-display text-2xl font-bold text-cyan-300">A-CSPO</div>
+                                <div class="text-xs text-blue-200">Certified</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right content panel -->
+                    <div class="lg:col-span-2 p-8 lg:p-10">
+                        <div class="mb-6">
+                            <h3 class="font-display text-sm font-bold text-blue-600 uppercase tracking-wide mb-2">The Challenge</h3>
+                            <p class="text-gray-700 leading-relaxed">The software development lifecycle needed a more flexible structure to support CI/CD delivery. The existing infrastructure was built around a waterfall methodology, which could not keep pace with the company&rsquo;s ad-hoc business demands.</p>
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="font-display text-sm font-bold text-blue-600 uppercase tracking-wide mb-2">The Approach</h3>
+                            <p class="text-gray-700 leading-relaxed">Researched Agile development practices in depth and earned the Advanced Certified Scrum Product Owner (A-CSPO) credential from Scrum Alliance, then used that foundation to design an Agile operating model fitted to the organization.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-sm font-bold text-blue-600 uppercase tracking-wide mb-2">The Result</h3>
+                            <p class="text-gray-700 leading-relaxed">Implemented a hybrid Agile structure across two development silos, each with a Software Development Manager, PM, BA, developers, and QA. Both were supported by a dedicated architecture silo of senior project management, software architects, TSAs, and data analysts.</p>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-gray-100 flex flex-wrap gap-2">
+                            <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">Agile / Scrum</span>
+                            <span class="text-xs bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full">CI/CD</span>
+                            <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">SDLC</span>
+                            <span class="text-xs bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full">Org Design</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Case Study 2 -->
+            <article class="case-card bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                <div class="grid lg:grid-cols-3">
+                    <!-- Left accent panel -->
+                    <div class="bg-gradient-to-br from-blue-900 to-cyan-900 p-8 lg:p-10 text-white flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block bg-cyan-400/20 text-cyan-300 text-xs font-semibold px-3 py-1 rounded-full mb-4">Data &amp; Automation</span>
+                            <h2 class="font-display text-2xl font-bold mb-3">Automated Employee Lifecycle Notifications</h2>
+                            <p class="text-blue-100 text-sm leading-relaxed">Replacing manual HR notifications with one automated channel from a third-party system to the company ecosystem.</p>
+                        </div>
+                        <div class="mt-8 grid grid-cols-3 gap-3">
+                            <div>
+                                <div class="font-display text-2xl font-bold text-cyan-300">3</div>
+                                <div class="text-xs text-blue-200">Lifecycle events automated</div>
+                            </div>
+                            <div>
+                                <div class="font-display text-2xl font-bold text-cyan-300">1</div>
+                                <div class="text-xs text-blue-200">Unified channel</div>
+                            </div>
+                            <div>
+                                <div class="font-display text-2xl font-bold text-cyan-300">0</div>
+                                <div class="text-xs text-blue-200">Manual notifications</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right content panel -->
+                    <div class="lg:col-span-2 p-8 lg:p-10">
+                        <div class="mb-6">
+                            <h3 class="font-display text-sm font-bold text-blue-600 uppercase tracking-wide mb-2">The Challenge</h3>
+                            <p class="text-gray-700 leading-relaxed">The company needed a streamlined way to notify the business of new employees, employee changes, and terminations originating in a third-party database. The process relied on manual handling and manual notifications.</p>
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="font-display text-sm font-bold text-blue-600 uppercase tracking-wide mb-2">The Approach</h3>
+                            <p class="text-gray-700 leading-relaxed">Architected the ETL processing and data flow that delivers employee information to division leadership in the formats each group needs: database updates, emails, CSV files, Microsoft Lists, and more.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-sm font-bold text-blue-600 uppercase tracking-wide mb-2">The Result</h3>
+                            <p class="text-gray-700 leading-relaxed">Consolidated the flow of employee data to multiple datastores through a single unified channel, eliminating manual processing and manual notifications.</p>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-gray-100 flex flex-wrap gap-2">
+                            <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">ETL</span>
+                            <span class="text-xs bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full">Data Integration</span>
+                            <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">Workflow Automation</span>
+                            <span class="text-xs bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full">Microsoft Lists</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Case Study 3 -->
+            <article class="case-card bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                <div class="grid lg:grid-cols-3">
+                    <!-- Left accent panel -->
+                    <div class="bg-gradient-to-br from-slate-900 to-cyan-900 p-8 lg:p-10 text-white flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block bg-cyan-400/20 text-cyan-300 text-xs font-semibold px-3 py-1 rounded-full mb-4">AI &amp; Automation</span>
+                            <h2 class="font-display text-2xl font-bold mb-3">AI-Powered Division Newsletter Generator</h2>
+                            <p class="text-blue-100 text-sm leading-relaxed">Turning a quarter&rsquo;s worth of stored updates into a finished, magazine-style newsletter with the press of a button.</p>
+                        </div>
+                        <div class="mt-8 grid grid-cols-3 gap-3">
+                            <div>
+                                <div class="font-display text-2xl font-bold text-cyan-300">3</div>
+                                <div class="text-xs text-blue-200">Inputs per story</div>
+                            </div>
+                            <div>
+                                <div class="font-display text-2xl font-bold text-cyan-300">1</div>
+                                <div class="text-xs text-blue-200">Click to publish</div>
+                            </div>
+                            <div>
+                                <div class="font-display text-2xl font-bold text-cyan-300">4</div>
+                                <div class="text-xs text-blue-200">Editions a year</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right content panel -->
+                    <div class="lg:col-span-2 p-8 lg:p-10">
+                        <div class="mb-6">
+                            <h3 class="font-display text-sm font-bold text-blue-600 uppercase tracking-wide mb-2">The Challenge</h3>
+                            <p class="text-gray-700 leading-relaxed">The division needed a quarterly newsletter, but assembling each edition by hand was time-consuming. Stories, details, and images had to be collected, written up, and laid out manually every quarter.</p>
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="font-display text-sm font-bold text-blue-600 uppercase tracking-wide mb-2">The Approach</h3>
+                            <p class="text-gray-700 leading-relaxed">Designed and built an end-to-end solution: a Microsoft List that stores each story by newsletter edition and quarter, a Power Automate flow that gathers the edition&rsquo;s content, and an AI agent that turns it into a complete, magazine-style newsletter.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-sm font-bold text-blue-600 uppercase tracking-wide mb-2">The Result</h3>
+                            <p class="text-gray-700 leading-relaxed">Dramatically reduced the time it takes to produce each edition. Contributors simply log a headline, details, and an image source throughout the quarter; at publication time, one button generates the entire newsletter.</p>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-gray-100 flex flex-wrap gap-2">
+                            <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">AI Agent</span>
+                            <span class="text-xs bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full">MS Power Automate</span>
+                            <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full">Microsoft Lists</span>
+                            <span class="text-xs bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full">Content Automation</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pb-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 rounded-2xl p-10">
+                <h2 class="font-display text-3xl font-bold text-white mb-4">Want to discuss the work behind these results?</h2>
+                <p class="text-gray-300 mb-8">Let's connect and explore how strategic engineering leadership can drive measurable impact.</p>
+                <a href="index.html#contact" class="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <a href="index.html" class="flex items-center justify-center space-x-2 mb-4">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">JW</span>
+                    </div>
+                    <span class="font-mono font-semibold text-lg">jeremy.williams</span>
+                </a>
+                <p class="text-gray-400 mb-6">
+                    VP Software Development | Architectural Excellence | Team Leadership
+                </p>
+                <p class="text-gray-500 text-sm">
+                    © 2026 Jeremy Williams. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const isOpen = menu.classList.toggle('active');
+            const toggleBtn = document.querySelector('[aria-controls="mobileMenu"]');
+            if (toggleBtn) {
+                toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            }
+        }
+    </script>
+</body>
+</html>
