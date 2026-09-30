@@ -109,6 +109,60 @@
         .mobile-menu.active {
             display: block;
         }
+        /* Techy Case Studies nav button */
+        .tech-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 45%, #2563eb 80%, #0891b2 100%);
+            box-shadow: inset 0 0 0 1px rgba(103, 232, 249, 0.5), 0 0 12px rgba(6, 182, 212, 0.35);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .tech-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -60%;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transform: skewX(-20deg);
+            animation: techShine 3.5s ease-in-out infinite;
+        }
+        .tech-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: inset 0 0 0 1px rgba(103, 232, 249, 0.9), 0 0 22px rgba(6, 182, 212, 0.6);
+        }
+        .tech-btn-glyph {
+            color: #67e8f9;
+        }
+        .tech-btn-caret {
+            width: 0.5em;
+            height: 2px;
+            align-self: flex-end;
+            margin-bottom: 0.35em;
+            background: #67e8f9;
+            animation: techBlink 1s steps(1) infinite;
+        }
+        @keyframes techShine {
+            0% { left: -60%; }
+            60%, 100% { left: 130%; }
+        }
+        @keyframes techBlink {
+            50% { opacity: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .tech-btn::before, .tech-btn-caret { animation: none; }
+        }
     </style>
 </head>
 <body class="text-gray-900">
@@ -132,7 +186,7 @@
                     <a href="index.html#leadership" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Leadership</a>
                     <a href="index.html#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Contact</a>
                     <span class="text-gray-300 select-none" aria-hidden="true">|</span>
-                    <a href="case-studies.html" aria-current="page" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 hover:shadow-lg transition-all duration-300">Case Studies</a>
+                    <a href="case-studies.html" aria-current="page" class="tech-btn"><span class="tech-btn-glyph" aria-hidden="true">&lt;/&gt;</span>Case Studies<span class="tech-btn-caret" aria-hidden="true"></span></a>
                 </div>
                 <button class="md:hidden" onclick="toggleMobileMenu()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -159,7 +213,7 @@
             <a href="index.html#leadership" class="text-gray-700 hover:text-blue-600 font-medium text-lg" onclick="toggleMobileMenu()">Leadership</a>
             <a href="index.html#contact" class="text-gray-700 hover:text-blue-600 font-medium text-lg" onclick="toggleMobileMenu()">Contact</a>
             <div class="border-t border-gray-200" aria-hidden="true"></div>
-            <a href="case-studies.html" aria-current="page" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium text-lg text-center hover:bg-blue-700 transition-all duration-300" onclick="toggleMobileMenu()">Case Studies</a>
+            <a href="case-studies.html" aria-current="page" class="tech-btn text-base py-3" onclick="toggleMobileMenu()"><span class="tech-btn-glyph" aria-hidden="true">&lt;/&gt;</span>Case Studies<span class="tech-btn-caret" aria-hidden="true"></span></a>
         </div>
     </div>
 
