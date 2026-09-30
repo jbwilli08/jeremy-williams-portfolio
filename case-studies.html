@@ -125,13 +125,14 @@
                     </div>
                     <span class="font-mono font-semibold text-lg">jeremy.williams</span>
                 </a>
-                <div class="hidden md:flex space-x-8">
+                <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html#home" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
                     <a href="index.html#about" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
                     <a href="index.html#expertise" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Expertise</a>
                     <a href="index.html#leadership" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Leadership</a>
-                    <a href="case-studies.html" class="nav-link text-blue-600 font-semibold">Case Studies</a>
                     <a href="index.html#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                    <span class="text-gray-300 select-none" aria-hidden="true">|</span>
+                    <a href="case-studies.html" aria-current="page" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 hover:shadow-lg transition-all duration-300">Case Studies</a>
                 </div>
                 <button class="md:hidden" onclick="toggleMobileMenu()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -156,8 +157,9 @@
             <a href="index.html#about" class="text-gray-700 hover:text-blue-600 font-medium text-lg" onclick="toggleMobileMenu()">About</a>
             <a href="index.html#expertise" class="text-gray-700 hover:text-blue-600 font-medium text-lg" onclick="toggleMobileMenu()">Expertise</a>
             <a href="index.html#leadership" class="text-gray-700 hover:text-blue-600 font-medium text-lg" onclick="toggleMobileMenu()">Leadership</a>
-            <a href="case-studies.html" class="text-blue-600 font-semibold text-lg" onclick="toggleMobileMenu()">Case Studies</a>
             <a href="index.html#contact" class="text-gray-700 hover:text-blue-600 font-medium text-lg" onclick="toggleMobileMenu()">Contact</a>
+            <div class="border-t border-gray-200" aria-hidden="true"></div>
+            <a href="case-studies.html" aria-current="page" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium text-lg text-center hover:bg-blue-700 transition-all duration-300" onclick="toggleMobileMenu()">Case Studies</a>
         </div>
     </div>
 
